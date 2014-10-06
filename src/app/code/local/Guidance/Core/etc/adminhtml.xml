@@ -17,9 +17,14 @@
                     <title>Guidance</title>
                     <sort_order>1</sort_order>
                     <children>
+                        <log translate="title">
+                            <title>Logs</title>
+                            <sort_order>900</sort_order>
+                            <action>adminhtml/guidance/log</action>
+                        </log>
                         <audit translate="title">
                             <title>Audit</title>
-                            <sort_order>10</sort_order>
+                            <sort_order>1000</sort_order>
                             <action>adminhtml/guidance/audit</action>
                         </audit>
                     </children>
@@ -37,9 +42,13 @@
                                 <title>Guidance</title>
                                 <sort_order>1</sort_order>
                                 <children>
+                                    <log translate="title">
+                                        <title>Logs</title>
+                                        <sort_order>900</sort_order>
+                                    </log>
                                     <audit translate="title">
                                         <title>Audit</title>
-                                        <sort_order>10</sort_order>
+                                        <sort_order>1000</sort_order>
                                     </audit>
                                 </children>
                             </guidance>

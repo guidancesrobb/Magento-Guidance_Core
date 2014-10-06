@@ -12,7 +12,7 @@
 <config>
     <modules>
         <Guidance_Core>
-            <version>0.5.0</version>
+            <version>0.6.0</version>
         </Guidance_Core>
     </modules>
     <global>
@@ -26,6 +26,27 @@
                 <class>Guidance_Core_Helper</class>
             </guidance_core>
         </helpers>
+        <models>
+            <guidance_core>
+                <class>Guidance_Core_Model</class>
+                <resourceModel>guidance_core_resource</resourceModel>
+            </guidance_core>
+            <guidance_core_resource>
+                <class>Guidance_Core_Model_Resource</class>
+                <entities>
+                    <log>
+                        <table>log_guidance</table>
+                    </log>
+                </entities>
+            </guidance_core_resource>
+        </models>
+        <resources>
+            <guidance_core_setup>
+                <setup>
+                    <module>Guidance_Core</module>
+                </setup>
+            </guidance_core_setup>
+        </resources>
     </global>
     <admin>
         <routers>

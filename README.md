@@ -9,10 +9,17 @@ Magento Guidance Core Module
     * Displays statistics about catalog, customer, order, etc size
     * Details products by type
     * Shows information about modules (code pools, rewrites)
+* Database Logging
+	* Extend your helper from `Guidance_Core_Helper_Abstract` and define `$_moduleName`.  Use `$this->log($message, $logLevel)` to log to the database
+	* Easier to filter, sort, and check logs when needed, instead of reading the file system
 
 # Screenshots
 
 ![Audit](http://i.imgur.com/MK2o07k.png)
+
+---
+
+![Logs](http://i.imgur.com/5LaShdj.png)
 
 # Installation
 

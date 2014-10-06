@@ -15,11 +15,19 @@
             <action method="addCss"><stylesheet>guidance/core/css/guidance.css</stylesheet></action>
         </reference>
         <reference name="content">
-            <block type="core/text_list" name="guidance.audit" as="guidance.audit">
-                <block type="guidance_core/adminhtml_audit_stats" name="guidance.audit.stats" as="guidance.audit.stats" template="guidance/core/audit/stats.phtml" />
-                <block type="guidance_core/adminhtml_audit_products" name="guidance.audit.products" as="guidance.audit.products" template="guidance/core/audit/products.phtml" />
-                <block type="guidance_core/adminhtml_audit_modules" name="guidance.audit.modules" as="guidance.audit.modules" template="guidance/core/audit/modules.phtml" />
+            <block type="core/text_list" name="guidance.audit">
+                <block type="guidance_core/adminhtml_audit_stats" name="guidance.audit.stats" template="guidance/core/audit/stats.phtml" />
+                <block type="guidance_core/adminhtml_audit_products" name="guidance.audit.products" template="guidance/core/audit/products.phtml" />
+                <block type="guidance_core/adminhtml_audit_modules" name="guidance.audit.modules" template="guidance/core/audit/modules.phtml" />
             </block>
         </reference>
     </adminhtml_guidance_audit>
+    <adminhtml_guidance_log>
+        <reference name="head">
+            <action method="addCss"><stylesheet>guidance/core/css/guidance.css</stylesheet></action>
+        </reference>
+        <reference name="content">
+            <block type="guidance_core/adminhtml_log" name="guidance.log" />
+        </reference>
+    </adminhtml_guidance_log>
 </layout>

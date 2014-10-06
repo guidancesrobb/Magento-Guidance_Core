@@ -8,6 +8,4 @@
  * @copyright Copyright (c) 2014 Guidance Solutions (http://www.guidance.com)
  */
 
-class Guidance_Core_Helper_Data extends Guidance_Core_Helper_Abstract
-{
-}
+Mage::helper('guidance_core')->log('Guidance Core v0.6.0 installed.');
