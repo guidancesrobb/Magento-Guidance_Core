@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+ * Guidance Core Module
+ *
+ * @author    Guidance Magento Team <magento@guidance.com>
+ * @category  Guidance
+ * @package   Guidance_Core
+ * @copyright Copyright (c) 2014 Guidance Solutions (http://www.guidance.com)
+ */
+-->
+<layout>
+    <adminhtml_guidance_audit>
+        <reference name="content">
+            <block type="core/text_list" name="guidance.audit" as="guidance.audit">
+                <block type="guidance_core/adminhtml_audit_stats" name="guidance.audit.stats" as="guidance.audit.stats" template="guidance/core/audit/stats.phtml" />
+            </block>
+            <!-- block type="guidance_core/adminhtml_audit" name="guidance.audit" template="guidance/core/audit.phtml"/ -->
+        </reference>
+    </adminhtml_guidance_audit>
+</layout>

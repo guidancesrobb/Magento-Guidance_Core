@@ -1,0 +1,50 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Guidance Core Module
+ *
+ * @author    Guidance Magento Team <magento@guidance.com>
+ * @category  Guidance
+ * @package   Guidance_Core
+ * @copyright Copyright (c) 2014 Guidance Solutions (http://www.guidance.com)
+ */
+-->
+<config>
+    <modules>
+        <Guidance_Core>
+            <version>0.1.0</version>
+        </Guidance_Core>
+    </modules>
+    <global>
+        <blocks>
+            <guidance_core>
+                <class>Guidance_Core_Block</class>
+            </guidance_core>
+        </blocks>
+        <helpers>
+            <guidance_core>
+                <class>Guidance_Core_Helper</class>
+            </guidance_core>
+        </helpers>
+    </global>
+    <admin>
+        <routers>
+            <adminhtml>
+                <args>
+                    <modules>
+                        <Guidance_Core before="Mage_Adminhtml">Guidance_Core_Adminhtml</Guidance_Core>
+                    </modules>
+                </args>
+            </adminhtml>
+        </routers>
+    </admin>
+    <adminhtml>
+        <layout>
+            <updates>
+                <guidance_core>
+                    <file>guidance/core.xml</file>
+                </guidance_core>
+            </updates>
+        </layout>
+    </adminhtml>
+</config>

@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Guidance Core Module
+ *
+ * @author    Guidance Magento Team <magento@guidance.com>
+ * @category  Guidance
+ * @package   Guidance_Core
+ * @copyright Copyright (c) 2014 Guidance Solutions (http://www.guidance.com)
+ */
+-->
+<config>
+    <modules>
+        <Guidance_Core>
+            <active>true</active>
+            <codePool>local</codePool>
+        </Guidance_Core>
+    </modules>
+</config>
