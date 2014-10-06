@@ -12,7 +12,7 @@ Magento Guidance Core Module
 
 # Screenshots
 
-![Audit](http://i.imgur.com/u7uMg6J.png)
+![Audit](http://i.imgur.com/MK2o07k.png)
 
 # Installation
 

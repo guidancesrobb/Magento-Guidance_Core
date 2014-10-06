@@ -20,7 +20,7 @@
                 <thead>
                     <tr class="headings">
                         <th class="no-link"><span class="nobr"><?php echo $this->__('Code Pool') ?></span></th>
-                        <th class="no-link"><span class="nobr"><?php echo $this->__('Module Count') ?></span></th>
+                        <th class="no-link"><span class="nobr"><?php echo $this->__('Count') ?></span></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -58,3 +58,50 @@
         </div>
     </fieldset>
 </div>
+<div class="content-header">
+    <table cellspacing="0">
+        <tbody>
+            <tr>
+                <td><h3 class="head-dashboard"><?php echo $this->__('Module Detail') ?></h3></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<?php foreach ($this->getModuleCodepools() as $codePoolType => $modules): ?>
+    <?php 
+        if ($codePoolType == 'core') {
+            continue;
+        }
+    ?>
+    <h3><?php echo $this->__('%s code pool', ucwords($codePoolType)); ?></h3>
+    <?php if (count($modules)): ?>
+        <?php foreach ($modules as $moduleName): ?>
+        <div class="module">
+            <h4><?php echo $moduleName; ?></h4>
+            <?php foreach ($this->getModuleRewrites() as $rewriteType => $rewrites): ?>
+                <?php if (isset($rewrites[$moduleName]) && count($rewrites[$moduleName])): ?>
+                    <p class="rewrite"><?php echo $this->__('Rewritten %s:', ucwords($rewriteType)); ?></p>
+                    <ul>
+                    <?php foreach ($rewrites[$moduleName] as $rewrite): ?>
+                        <li>
+                            <?php echo $rewrite['alias']; ?> =&gt; <?php echo $rewrite['class']; ?>
+                            <?php $methods = $this->getOverridenMethods($rewrite['class']); ?>
+                            <?php if (count($methods)): ?>
+                            <ul>
+                                <?php foreach ($methods as $method): ?>
+                                <li><?php echo $method; ?></li>
+                                <?php endforeach; ?>
+                            </ul>
+                            <?php endif; ?>
+                        </li>
+                    <?php endforeach; ?>
+                    </ul>
+                <?php endif; ?>
+            <?php endforeach; ?>
+        </div>
+        <?php endforeach; ?>
+    <?php else: ?>
+        <p>No modules found</p>
+    <?php endif; ?>
+<?php endforeach; ?>

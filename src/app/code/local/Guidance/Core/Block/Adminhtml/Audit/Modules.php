@@ -35,6 +35,12 @@ class Guidance_Core_Block_Adminhtml_Audit_Modules
     protected $_systemRewrites;
 
     /**
+     * Cached module rewrite data
+     * @var array
+     */
+    protected $_moduleRewrites;
+
+    /**
      * Get module codepool data
      * 
      * @return array
@@ -88,8 +94,7 @@ class Guidance_Core_Block_Adminhtml_Audit_Modules
         switch ($classType) {
             case 'controllers':
                 foreach (array('admin', 'frontend') as $type) {
-                    $controllers = $config->getNode($type . '/routers')
-                        ->asArray();
+                    $controllers = $config->getNode($type . '/routers')->asArray();
                     foreach ($controllers as $router => $args) {
                         if (!isset($args['args']['modules'])) {
                             continue;
@@ -99,13 +104,48 @@ class Guidance_Core_Block_Adminhtml_Audit_Modules
                                 !isset($modules['@'])
                                 || !isset($modules['@']['before'])
                                 || strpos($modules[0], 'Mage_') === 0
+                                || strpos($modules[0], 'Enterprise_') === 0
                             ) {
                                 continue;
                             }
-                            $rewrites[$modules[0]] = array(
-                                'alias' => $modules['@']['before'],
-                                'class' => $modules[0]
+                            $moduleName = implode(
+                                '_',
+                                array_slice(
+                                    explode(
+                                        '_',
+                                        $modules[0]
+                                    ), 0, 2
+                                )
                             );
+                            $files = $this->_getControllerFiles(
+                                Mage::getModuleDir('controllers', $moduleName)
+                            );
+                            foreach ($files as $file) {
+                                preg_match_all(
+                                    '/class\s([a-z_]+)\sextends\s([a-z_]+)/i',
+                                    file_get_contents($file),
+                                    $matches,
+                                    PREG_PATTERN_ORDER
+                                );
+                                if (
+                                    !isset($matches[1][0])
+                                    || !isset($matches[2][0])
+                                ) {
+                                    continue;
+                                }
+                                $class   = trim($matches[1][0]);
+                                $extends = trim($matches[2][0]);
+                                if (strpos(
+                                    $extends,
+                                    $modules['@']['before']
+                                ) !== false) {
+                                    $rewrites[$class] = array(
+                                        'alias' => $extends,
+                                        'class' => $class
+                                    );
+                                    include_once $file;
+                                }
+                            }
                         }
                     }
                 }
@@ -129,5 +169,71 @@ class Guidance_Core_Block_Adminhtml_Audit_Modules
             ksort($rewrites);
         }
         return $rewrites;
+    }
+
+    /**
+     * Get ordered list of module rewrites
+     * 
+     * @return array
+     */
+    public function getModuleRewrites()
+    {
+        if (is_null($this->_moduleRewrites)) {
+            $this->_moduleRewrites = array();
+            $systemRewrites = $this->getSystemRewrites();
+            foreach ($this->_rewriteTypes as $rewriteType) {
+                foreach ($systemRewrites[$rewriteType] as $rewrite) {
+                    $module = explode('_', $rewrite['class']);
+                    $module = $module[0] . '_' . $module[1];
+                    $this->_moduleRewrites[$rewriteType][$module][] = $rewrite;
+                }
+            }
+        }
+        return $this->_moduleRewrites;
+    }
+
+    /**
+     * Get defined methods in a class
+     * 
+     * @param  string $className
+     * @return array
+     */
+    public function getOverridenMethods($className)
+    {
+        $overridenMethods = array();
+        $class = new ReflectionClass($className);
+        foreach ($class->getMethods() as $method) {
+            if ($method->getDeclaringClass()->getName() == $className) {
+                $overridenMethods[] = $method->getName();
+            }
+        }
+        sort($overridenMethods);
+        return $overridenMethods;
+    }
+
+    /**
+     * Get controller files from a module
+     * 
+     * @param  string $dir
+     * @param  array  $files
+     * @return array
+     */
+    protected function _getControllerFiles($dir, $files = array())
+    {
+        if (is_dir($dir)) {
+            $contents = scandir($dir);
+            foreach ($contents as $file) {
+                if (in_array($file, array('.', '..'))) {
+                    continue;
+                }
+                $file = $dir . '/' . $file;
+                if (substr($file, -14) == 'Controller.php') {
+                    $files[] = $file;
+                } else if (is_dir($file)) {
+                    $files += $this->_getControllerFiles($file, $files);
+                }
+            }
+        }
+        return $files;
     }
 }

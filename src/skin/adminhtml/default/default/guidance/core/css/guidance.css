@@ -1,3 +1,11 @@
+/**
+ * Guidance Core Module
+ *
+ * @author    Guidance Magento Team <magento@guidance.com>
+ * @category  Guidance
+ * @package   Guidance_Core
+ * @copyright Copyright (c) 2014 Guidance Solutions (http://www.guidance.com)
+ */
 .adminhtml-guidance-audit .entry-edit {
     float: left;
     width: 49%;
@@ -9,4 +17,15 @@
 
 .adminhtml-guidance-audit .entry-edit:nth-child(even) {
     margin-left: 2%;
+}
+
+.adminhtml-guidance-audit .module ul {
+    margin-left: 40px;
+    list-style-type: inherit;
+}
+
+.adminhtml-guidance-audit .module + .module {
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid #333;
 }
