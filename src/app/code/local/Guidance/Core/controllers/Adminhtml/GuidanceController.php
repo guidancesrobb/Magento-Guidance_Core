@@ -38,9 +38,9 @@ class Guidance_Core_Adminhtml_GuidanceController
     public function logAction()
     {
         $this
-            ->_title($this->__('Logs'))
+            ->_title($this->__('System'))
             ->_title($this->__('Guidance'))
-            ->_title($this->__('Audit'))
+            ->_title($this->__('Logs'))
             ->loadLayout()
             ->_setActiveMenu('system/guidance/log')
             ->renderLayout();

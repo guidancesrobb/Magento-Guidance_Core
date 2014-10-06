@@ -35,7 +35,7 @@ class Guidance_Core_Helper_Abstract extends Mage_Core_Helper_Abstract
             ))->save();
         } catch (Exception $e) {
             Mage::logException($e);
-            Mage::log($message, $logLevel, $_moduleName . '.log', true);
+            Mage::log($message, $logLevel, $this->_moduleName . '.log', true);
         }
     }
 }
