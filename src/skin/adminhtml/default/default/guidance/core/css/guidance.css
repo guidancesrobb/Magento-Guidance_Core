@@ -1,0 +1,12 @@
+.adminhtml-guidance-audit .entry-edit {
+    float: left;
+    width: 49%;
+}
+
+.adminhtml-guidance-audit .entry-edit:nth-child(odd) {
+    clear: both;
+}
+
+.adminhtml-guidance-audit .entry-edit:nth-child(even) {
+    margin-left: 2%;
+}

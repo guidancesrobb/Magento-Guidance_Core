@@ -1,0 +1,37 @@
+<?php
+/**
+ * Guidance Core Module
+ *
+ * @author    Guidance Magento Team <magento@guidance.com>
+ * @category  Guidance
+ * @package   Guidance_Core
+ * @copyright Copyright (c) 2014 Guidance Solutions (http://www.guidance.com)
+ */
+
+/**
+ * @var $this Guidance_Core_Block_Adminhtml_Audit_Products
+ */
+?>
+<div class="entry-edit">
+    <div class="entry-edit-head"><h4><?php echo $this->__('Product Breakdown') ?></h4></div>
+    <fieldset class="np">
+        <div class="grid np">
+            <table cellspacing="0" style="border:0;" id="products_grid">
+                <thead>
+                    <tr class="headings">
+                        <th class="no-link"><span class="nobr"><?php echo $this->__('Product Type') ?></span></th>
+                        <th class="no-link"><span class="nobr"><?php echo $this->__('Count') ?></span></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php foreach ($this->getCounts() as $_title => $_size): ?>
+                    <tr>
+                        <td><?php echo $_title; ?></td>
+                        <td class="a-right"><?php echo $_size ?></td>
+                    </tr>
+                    <?php endforeach; ?>
+                </tbody>
+            </table>
+        </div>
+    </fieldset>
+</div>

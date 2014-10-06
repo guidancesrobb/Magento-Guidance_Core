@@ -1,17 +1,18 @@
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/guidancesrobb/Magento-Guidance_Core/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/guidancesrobb/Magento-Guidance_Core/?branch=master)
 
-Magento Audit Module
+Magento Guidance Core Module
 ==============================
-
-Displays information about the store and installed modules
 
 # Features
 
-1. Displays statistics about catalog, customer, order, etc size
+* Magento Audit
+    * Displays statistics about catalog, customer, order, etc size
+    * Details products by type
+    * Shows information about modules (code pools, rewrites)
 
 # Screenshots
 
-![Audit](http://i.imgur.com/Bd0xXox.png)
+![Audit](http://i.imgur.com/u7uMg6J.png)
 
 # Installation
 

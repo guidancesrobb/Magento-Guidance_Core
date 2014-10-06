@@ -1,4 +1,5 @@
-src/app/etc/modules/Guidance_Core.xml                               app/etc/modules/Guidance_Core.xml
+src/app/code/local/Guidance/Core                                    app/code/local/Guidance/Core
 src/app/design/adminhtml/default/default/layout/guidance/core.xml   app/design/adminhtml/default/default/layout/guidance/core.xml
 src/app/design/adminhtml/default/default/template/guidance/core     app/design/adminhtml/default/default/template/guidance/core
-src/app/code/local/Guidance/Core                                    app/code/local/Guidance/Core
+src/app/etc/modules/Guidance_Core.xml                               app/etc/modules/Guidance_Core.xml
+src/skin/adminhtml/default/default/guidance/core/css/guidance.css   skin/adminhtml/default/default/guidance/core/css/guidance.css

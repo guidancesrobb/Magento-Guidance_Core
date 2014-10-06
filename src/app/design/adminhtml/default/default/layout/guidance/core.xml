@@ -11,11 +11,15 @@
 -->
 <layout>
     <adminhtml_guidance_audit>
+        <reference name="head">
+            <action method="addCss"><stylesheet>guidance/core/css/guidance.css</stylesheet></action>
+        </reference>
         <reference name="content">
             <block type="core/text_list" name="guidance.audit" as="guidance.audit">
                 <block type="guidance_core/adminhtml_audit_stats" name="guidance.audit.stats" as="guidance.audit.stats" template="guidance/core/audit/stats.phtml" />
+                <block type="guidance_core/adminhtml_audit_products" name="guidance.audit.products" as="guidance.audit.products" template="guidance/core/audit/products.phtml" />
+                <block type="guidance_core/adminhtml_audit_modules" name="guidance.audit.modules" as="guidance.audit.modules" template="guidance/core/audit/modules.phtml" />
             </block>
-            <!-- block type="guidance_core/adminhtml_audit" name="guidance.audit" template="guidance/core/audit.phtml"/ -->
         </reference>
     </adminhtml_guidance_audit>
 </layout>
